@@ -10,6 +10,35 @@ class Despesa {
     }
 }
 
+class BD {
+
+    constructor() {
+
+        let id = localStorage.getItem('id');
+
+        if (id === null) {
+            localStorage.setItem('id', 0);
+        }
+    }
+
+    proximoId() {
+
+        let proximoId = localStorage.getItem('id');
+        return parseInt(proximoId) + 1;
+    }
+
+    gravar(obj) {
+
+        let id = this.proximoId();
+
+        localStorage.setItem(id, JSON.stringify(obj));
+
+        localStorage.setItem('id', id);
+    }
+}
+
+let bd = new BD();
+
 
 function cadastrarDespesa() {
 
@@ -21,6 +50,8 @@ function cadastrarDespesa() {
     let valor = document.getElementById('valor');
 
     let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value);
+
+    bd.gravar(despesa)
 
     console.log(despesa);
 }
