@@ -90,6 +90,14 @@ function cadastrarDespesa() {
         document.getElementById("btn_modal").className = "btn btn-success";
 
         $("#modalRegistraGravacao").modal("show");
+
+        ano.value = ''
+        mes.value = ''
+        dia.value = ''
+        tipo.value = ''
+        descricao.value = ''
+        valor.value = ''
+
     } else {
         document.getElementById("modal_div").className = "modal-header text-danger";
         document.getElementById("titulo_modal").innerHTML =
