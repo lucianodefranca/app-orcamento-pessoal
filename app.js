@@ -87,7 +87,7 @@ class BD {
             despesasFiltradas = despesasFiltradas.filter(x => x.valor == obj.valor);
         }
 
-        console.log(despesasFiltradas);
+        return despesasFiltradas;
     }
 }
 
@@ -144,12 +144,14 @@ function cadastrarDespesa() {
     }
 }
 
-function carregarListaDespesas() {
-    let despesas = Array();
+function carregarListaDespesas(despesas = Array(), filtro = false) {
 
-    despesas = bd.recuperarTodosRegistros();
+    if (despesas.length == 0 && filtro == false) {
+        despesas = bd.recuperarTodosRegistros();
+    }
 
     let listaDespesas = document.getElementById("lista_despesas");
+    listaDespesas.innerHTML = '';
 
     despesas.forEach((obj) => {
         let linha = listaDespesas.insertRow();
@@ -198,6 +200,7 @@ function pesquisarDespesa() {
         valor.value
     );
 
-    bd.pesquisar(despesa);
+    let despesas = bd.pesquisar(despesa);
 
+    carregarListaDespesas(despesas, true);
 }
