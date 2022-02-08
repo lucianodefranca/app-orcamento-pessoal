@@ -8,6 +8,15 @@ class Despesa {
         this.descricao = descricao;
         this.valor = valor;
     }
+
+    validarDados() {
+        for (const x in this) {
+            if (this[x] === undefined || this[x] === '' || this[x] === null) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 class BD {
@@ -49,9 +58,20 @@ function cadastrarDespesa() {
     let descricao = document.getElementById('descricao');
     let valor = document.getElementById('valor');
 
-    let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value);
+    let despesa = new Despesa(
+        ano.value,
+        mes.value,
+        dia.value,
+        tipo.value,
+        descricao.value,
+        valor.value
+    );
 
-    bd.gravar(despesa)
+    if (despesa.validarDados()) {
+        bd.gravar(despesa);
+        $('#sucessoGravacao').modal('show');
+    } else {
+        $('#erroGravacao').modal('show');
+    }
 
-    console.log(despesa);
 }
