@@ -110,36 +110,16 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="erroGravacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalRegistraGravacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header text-danger">
-                    <h5 class="modal-title" id="exampleModalLabel">Erro na gravação</h5>
+                <div id="modal_div">
+                    <h5 class="modal-title" id="titulo_modal"></h5>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="close"></button>
                 </div>
-                <div class="modal-body">
-                    Existem campos obrigatórios que não foram preenchidos!
-                </div>
+                <div id="modal_conteudo" class="modal-body"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar e corrigir</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="sucessoGravacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-success">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro inserido com sucesso</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="close"></button>
-                </div>
-                <div class="modal-body">
-                    Despesa cadastrada com sucesso!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                    <button id="btn_modal" type="button" data-dismiss="modal"></button>
                 </div>
             </div>
         </div>
