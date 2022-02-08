@@ -56,6 +56,39 @@ class BD {
         }
         return despesas;
     }
+
+    pesquisar(obj) {
+
+        let despesasFiltradas = Array();
+
+        despesasFiltradas = this.recuperarTodosRegistros();
+
+        if (obj.ano != '') {
+            despesasFiltradas = despesasFiltradas.filter(x => x.ano == obj.ano);
+        }
+
+        if (obj.dia != '') {
+            despesasFiltradas = despesasFiltradas.filter(x => x.dia == obj.dia);
+        }
+
+        if (obj.mes != '') {
+            despesasFiltradas = despesasFiltradas.filter(x => x.mes == obj.mes);
+        }
+
+        if (obj.tipo != '') {
+            despesasFiltradas = despesasFiltradas.filter(x => x.tipo == obj.tipo);
+        }
+
+        if (obj.descricao != '') {
+            despesasFiltradas = despesasFiltradas.filter(x => x.descricao == obj.descricao);
+        }
+
+        if (obj.valor != '') {
+            despesasFiltradas = despesasFiltradas.filter(x => x.valor == obj.valor);
+        }
+
+        console.log(despesasFiltradas);
+    }
 }
 
 let bd = new BD();
@@ -145,6 +178,26 @@ function carregarListaDespesas() {
         linha.insertCell(2).innerHTML = obj.descricao;
         linha.insertCell(3).innerHTML = obj.valor;
     });
+}
 
-    console.log(despesas);
+function pesquisarDespesa() {
+
+    let ano = document.getElementById("ano");
+    let mes = document.getElementById("mes");
+    let dia = document.getElementById("dia");
+    let tipo = document.getElementById("tipo");
+    let descricao = document.getElementById("descricao");
+    let valor = document.getElementById("valor");
+
+    let despesa = new Despesa(
+        ano.value,
+        mes.value,
+        dia.value,
+        tipo.value,
+        descricao.value,
+        valor.value
+    );
+
+    bd.pesquisar(despesa);
+
 }
